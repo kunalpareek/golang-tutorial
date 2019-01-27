@@ -1,0 +1,151 @@
+The Go Programming Language
+25 Jan 2019
+Tags: go golang 
+
+Kunal Pareek
+Software Developer
+kunalpareek01@gmail.com
+
+* The Go Programming Language
+- Created by Robert Griesemer, Rob Pike, and Ken Thompson
+- Compiled
+- Statically typed
+- Garbage collected
+- Built in concurrency
+- No virtual machines
+
+* Some projects using Go
+- Kubernetes
+- Docker
+- InfluxDB
+- Uber's ride matching engine
+- Reddit's ad engine
+- Ethereum
+- Hyperledger Fabric
+- Google for their download server dl.google.com
+- Snappy
+- Terraform 
+
+* Hello World
+.play -edit code/hello_world.go
+
+* Types
+- bool
+- string
+- int  int8  int16  int32  int64
+- uint uint8 uint16 uint32 uint64 uintptr
+- byte // alias for uint8
+- float32 float64
+- complex64 complex128
+
+* Types - Example
+.play -edit code/types.go
+
+* Variables
+- The var statement declares a list of variables
+- A var statement can be at package or function level
+.play -edit code/variables.go
+
+* Varibles with intitializers
+- A var declaration can include initializers, one per variable.
+- If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+.play -edit code/variables_with_initializers.go
+
+* Short variable declarations
+- Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
+- Outside a function, the := short assignment statement cannot be used
+.play -edit code/short_variable_declaration.go
+
+* Constants
+- Constants are declared like variables, but with the const keyword.
+- Constants can be character, string, boolean, or numeric values.
+- Constants cannot be declared using the := syntax.
+.play -edit code/constants.go
+
+* Loops
+- Go has only for loop
+.play -edit code/for.go
+
+* If Else
+.play -edit code/if_else.go
+.link https://golang.org/pkg/fmt/ For more details on string formatting
+
+* Switch
+.play -edit code/switch.go
+
+* Defer
+- A defer statement defers the execution of a function until the surrounding function returns.
+- The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+.play -edit code/defer.go
+
+* Pointers
+- A pointer holds the memory address of a value.
+- The type *T is a pointer to a T value. Its zero value is nil.
+    var p *int
+- The & operator generates a pointer to its operand.
+    i := 42
+    p = &i
+
+- The * operator denotes the pointer's underlying value.
+    fmt.Println(*p) // read i through the pointer p
+    *p = 21         // set i through the pointer p
+
+* Pointers - Example
+.play -edit code/pointers.go
+
+* Structs
+- A struct is a collection of fields.
+- Struct fields are accessed using a dot.
+.play -edit code/structs.go
+
+* Pointers to structs
+- Struct fields can be accessed through a struct pointer.
+.play -edit code/struct_pointers.go
+
+* Arrays
+- The type [n]T is an array of n values of type T.
+.play -edit code/array.go
+
+* Slices
+- An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array.
+- The type []T is a slice with elements of type T.
+.play -edit code/slices.go
+
+* Appending to Slices
+.play -edit code/slice_append.go
+
+* Maps
+- A map maps keys to values.
+- The zero value of a map is nil. A nil map has no keys, nor can keys be added.
+- The make function returns a map of the given type, initialized and ready for use.
+.play -edit code/maps.go
+
+* Mutating Maps
+.play -edit code/mutating_maps.go
+
+* Methods
+- Go does not have classes. However, you can define methods on types.
+- A method is nothing but FUNC attached to TYPE.
+- The receiver appears in its own argument list between the func keyword and the method name.
+    type Vertex struct {
+        X, Y float64
+    }
+
+    func (v Vertex) Abs() float64 {
+        return math.Sqrt(v.X*v.X + v.Y*v.Y)
+    }
+
+* Methods - Example
+.play -edit code/methods.go
+
+* Goroutines
+- A goroutine is a lightweight thread managed by the Go runtime.
+    go f(x, y, z) // starts a new goroutine running f(x, y, z)
+.play -edit code/goroutines.go
+
+* Channels 
+- Channels are the pipes that connect concurrent goroutines.
+- Send values into channels from one goroutine and receive those values into another goroutine.
+
+* Channels - Example
+.play -edit code/channel.go
